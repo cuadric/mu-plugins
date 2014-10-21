@@ -1,0 +1,143 @@
+		
+		#wp-admin-bar-wp-logo {
+			display:none !important;
+		}
+		#wpadminbar .quicklinks #wp-admin-bar-site-name {
+			width: 150px;
+			margin: 0;
+			padding: 0;
+			/* la siguiente linea hay que definirla en el functions.php del theme en cocreto, no es correcto que esté en un plugin. */
+			/*background: url(' . get_bloginfo('template_directory') . '/img/Logo_admin.png) no-repeat center center;*/
+		}
+
+		/* el menú hizontal de "New" */
+		#wp-admin-bar-new-content {
+			display: none;
+		}
+
+		/* el menú hizontal de "Comments" */
+		#wp-admin-bar-comments {
+			display: none;
+		}
+
+		/* el menú hizontal de "Newsletters" */
+		#wp-admin-bar-alo_easymail {
+			display: none;
+		}
+
+		/* El idioma actual de WPML */
+		.ab-item.ab-empty-item {
+			cursor: default;
+		}
+		/* el iconito redondo de ayuda del selector de idiomas de WPML, feo de cojones */
+		#wpml_als_help_link {
+			display: none;
+		}
+
+
+			
+		#category-all { 
+			height: auto !important;
+			max-height: none !important;
+		}
+
+
+
+
+	/* el separador entre grupos de menús */
+	#adminmenu li.wp-menu-separator {
+		background: rgba(0,0,0,0.1);
+		margin: 0;
+	}
+
+
+		/* Los submenús de la sedebar del panel de control */
+		#adminmenu .wp-submenu {
+			width: auto;
+		}
+			#adminmenu .wp-not-current-submenu a {
+				white-space: nowrap;
+			}
+				#adminmenu .wp-not-current-submenu li > a {
+					padding-left: 24px;
+				}
+
+				#adminmenu .wp-submenu a {
+					position: relative;
+				}
+					#adminmenu .wp-submenu a:before {
+						content: '';
+						display: block;
+						position: absolute;
+						left: 4px;
+						top: 50%;
+						margin-top: -4px;
+						border: 4px solid transparent;
+						border-left: 4px solid #56A3C5;
+					}
+						#adminmenu .wp-not-current-submenu a:before {
+							left: 12px;
+						}
+						#adminmenu .wp-submenu li.current a:before,
+						#adminmenu .wp-submenu li.current a:hover:before,
+						#adminmenu .wp-submenu a:hover:before,
+						#adminmenu .wp-submenu a:focus:before {
+							border-left-color: #E14D43;
+						}
+
+						#adminmenu .wp-submenu a:before {
+							padding-left: 30px;
+						}
+
+
+
+
+	.wp-list-table.users #username {
+		width: 22%;
+	}
+	.wp-list-table.users #name {
+		width: 16%;
+	}
+	.wp-list-table.users #email {
+		width: 18%;
+	}
+	.wp-list-table.users #role {
+		width: 8%;
+	}
+	.wp-list-table.users #cuadric_user_status {
+		width: 22%;
+	}
+	.wp-list-table.users #cuadric_user_date_subscribed {
+		width: 10%;
+	}
+		.wp-list-table.users .column-cuadric_user_status {
+			background: #3D3D3D;
+		}
+		.wp-list-table.users th.column-cuadric_user_status {
+			background: #3D3D3D;
+			color: #D5D5D5;
+		}
+		.wp-list-table.users .column-cuadric_user_status {
+			background: #3D3D3D;
+		}
+		.wp-list-table.users .alternate .column-cuadric_user_status {
+			background: #363636;
+		}
+
+			.wp-list-table.users .column-cuadric_user_status table {
+				width: 100%;
+			}
+				.wp-list-table.users .column-cuadric_user_status td {
+					padding: 8px;
+					width: 33%;
+				}
+	.wp-list-table.users #signup_ip {
+		width: 10%;
+	}
+
+/* reparamos lacolumna de datos de Post Meta Inspector cuando hay demasiados datos*/
+#post-meta-inspector table .value-column {
+	display: table-cell;
+	width: 79%;
+	max-width: 300px;
+}

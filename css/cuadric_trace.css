@@ -1,0 +1,59 @@
+
+.debug_trace {
+	display: block !important;
+	background: #FFF !important;
+	padding: 1em !important;
+	border: 1px solid #DDD !important;
+	margin-bottom: 1em !important;
+	border-radius: 5px !important;
+	overflow: auto !important;
+	box-shadow: 0 1px 5px rgba(0, 0, 0, .07) !important;
+}
+		.debug_trace .debug_title {
+			position: relative;
+			margin: -1em -1em 1em -1em !important;
+			background: #DDEEFC !important;
+			padding: 0.4em 1em !important;
+			border-bottom: 1px solid #DDD !important;
+			box-shadow: 0 0 6px rgba(0, 0, 0, .07) !important;
+			min-height: 2em !important;
+			line-height: 1.4em !important;
+		}
+			.debug_trace .expand_btn,
+			.debug_trace .colapse_btn {
+				display: block;
+				position: absolute;
+				top: .5em;
+				height: 1em;
+				width: 1em;
+				border-radius: 50%;
+				background: #A7D0F1;
+				cursor: pointer;
+			}
+			.debug_trace .expand_btn {
+				right: 2em;
+			}
+			.debug_trace .colapse_btn {
+				right: .5em;
+			}
+				.debug_trace .expand_btn:hover,
+				.debug_trace .expand_btn.active,
+				.debug_trace .colapse_btn:hover,
+				.debug_trace .colapse_btn.active {
+					background: #689BC5;
+				}
+		.debug_trace .debug_pre {
+			
+		}
+	.debug_trace.expanded {
+		position: fixed !important;
+		top: 1em !important;
+		bottom: 1em !important;
+		left: 1em !important;
+		right: 1em !important;
+		z-index: 1000000 !important;
+	}
+	.debug_trace.colapsed {
+		overflow: hidden !important;
+		height: 2.2em !important;
+	}

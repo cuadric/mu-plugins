@@ -17,9 +17,12 @@ function cuadric_my_custom_frontend() {
 }
 function cuadric_my_custom_admin() {
 	// --> http://codex.wordpress.org/Function_Reference/plugins_url
-	wp_enqueue_style( 	'cuadric_admin_css_custom', 	plugins_url( 'css/cuadric_admin_customizations.css'	, __FILE__ ), 	array(), 			'1' );
+	if ( is_admin() ) :
+		wp_enqueue_style( 	'cuadric_admin_css_custom', 	plugins_url( 'css/cuadric_admin_customizations.css'	, __FILE__ ), 	array(), 			'1' );
+		wp_enqueue_script( 	'cuadric_admin_js_custom', 		plugins_url( 'js/cuadric_admin_customizations.js' 		, __FILE__ ), 	array('jquery'), 	'1' );
+	endif;
+
 	wp_enqueue_style( 	'cuadric_trace', 				plugins_url( 'css/cuadric_trace.css' 					, __FILE__ ), 	array(), 			'1' );
-	wp_enqueue_script( 	'cuadric_admin_js_custom', 		plugins_url( 'js/cuadric_admin_customizations.js' 		, __FILE__ ), 	array('jquery'), 	'1' );
 	wp_enqueue_script( 	'cuadric_trace', 				plugins_url( 'js/cuadric_trace.js' 						, __FILE__ ), 	array('jquery'), 	'1' );
 }
 

@@ -59,12 +59,6 @@ function print_var_now($var, $title=''){
 		echo '</div>';
 }
 
-// función para mostrar el objeto wp_query con toda la info disponible sobre la consulta actual.
-function print_wp_query() {
-	global $wp_query;
-	print_var($wp_query);
-}
-
 /**
 * Uso: <?php trace($wp_query) ?> // o cualquier variable, array o lo que sea.
 *
@@ -196,7 +190,7 @@ add_action('init', 'cuadric_remove_blogging_head_links');
 	}
 
 // ---------------------------------------------------------------------------------------------------
-
+/*
 // función para obtener el ID del post o la página actual
 function get_current_id() {
 	global $wp_query;
@@ -212,7 +206,7 @@ function get_current_term_id() {
 	global $wp_query;
 	return $wp_query->queried_object->term_id;
 }
-
+*/
 // ---------------------------------------------------------------------------------------------------
 
 // agregamos todos los custom post types a la caja "Right now" del dashboard
@@ -385,84 +379,6 @@ function cuadric_get_paged() {
 	}
 
 	return $paged;
-}
-
-// paginación
-function cuadric_page_navi( $current_query = NULL ){
-
-	global $wp_query;
-
-	$main_query_replaced = false;
-
-	if ( $current_query ) :
-		$main_query_replaced = true;
-		$original_wp_query = $wp_query;
-		$wp_query = $current_query;
-	endif;
-
-	if ( is_single() ) : ?>
-
-		<div class="navigation single cuadric_page_navi">
-
-			<div class="prev-post"><?php previous_post_link('%link', '<span class="nav_label">' . __('&laquo; Previous') . '<br></span><span class="nav_text">' . '%title' . '</span>' ) ?></div>
-			<div class="next-post"><?php next_post_link( '%link', '<span class="nav_label">' . __('Next &raquo;') . '<br></span><span class="nav_text">' . '%title' . '</span>' ) ?></div>
-
-		</div>
-
-
-	<?php else :
-
-		if ( $wp_query->max_num_pages > 1 ) : // solo mostramos la navigation si hay más de una página de posts ?>
-
-			<div class="navigation archive cuadric_page_navi">
-
-				<?php
-
-				$big = 999999999; // need an unlikely integer
-
-				$num_items = 13; // debe ser siempre impar!!!! /  la cantidad de items que debe haber siempre
-				$end_size = 1; // siempre debe ser menor que ($num_items/2)-1
-				$mid_size = floor( ($num_items - ($end_size*2) - 1) / 2 );
-				$side_size = $mid_size + $end_size;
-
-				$current =  max( 1, get_query_var('paged') );
-
-				if ( $current <= $side_size){
-					$mid_size = ($side_size+1)-$current + $mid_size;
-				}
-
-				$args = array(
-					'base' 			=> str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
-					'format' 		=> '/page/%#%',
-					'current' 		=> $current,
-					'total' 		=> $wp_query->max_num_pages,
-					'show_all' 		=> false,
-					'end_size' 		=> $end_size,
-					'mid_size' 		=> $mid_size,
-					'prev_next' 	=> true,
-
-					'prev_text' 	=> __('&laquo; Previous', 'visit'),
-					'next_text' 	=> __('Next &raquo;', 'visit'),
-
-					'type' 			=> 'list',
-
-					//'add_args'     => array('id'=>5, 'post'=>'all'), 	// agrega un hash al final del link de paginación 'www.misitio.com/page/3/?id=5&post=all'
-					//'add_fragment' => 'page', 						// agrega un string al final del link de paginación generado 'www.misitio.com/page/3/mistring'
-				);
-
-				echo paginate_links( $args );
-				?>
-
-			</div>
-
-		<?php endif;
-
-		endif;
-
-
-		if ( $main_query_replaced ) :
-			$wp_query = $original_wp_query;
-		endif;
 }
 
 // ---------------------------------------------------------------------------------------------------
